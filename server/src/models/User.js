@@ -5,18 +5,48 @@ const bcryptjs = require("bcryptjs");
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    firstname: {
+      type: Types.String,
+      required: true,
+    },
+    lastname: {
       type: Types.String,
       required: true,
     },
     email: {
       type: Types.String,
-      unique: true,
+      unique: false,
       required: true,
     },
-    isEmailConfirmed: {
+    emailOTP: {
       type: Types.String,
-      default: true,
+      required: true,
+    },
+    isEmailVerified: {
+      type: Types.Boolean,
+      default: false,
+    },
+    phoneNumber: {
+      type: Types.String,
+      // unique: true,
+      unique: false,
+      required: true,
+    },
+    isPhoneNumberVerified: {
+      type: Types.Boolean,
+      default: false,
+    },
+    phoneNumberOTP: {
+      type: Types.String,
+      required: true,
+    },
+    isProfileCreated: {
+      type: Types.Boolean,
+      default: false,
+    },
+    isKYCDone: {
+      type: Types.Boolean,
+      default: false,
     },
     password: {
       type: Types.String,
@@ -35,9 +65,15 @@ const userSchema = new mongoose.Schema(
     methods: {
       toRespDTO: function () {
         return {
-          name: this.name,
+          firstname: this.firstname,
+          lastname: this.lastname,
           email: this.email,
+          isEmailVerified: this.isEmailVerified,
+          phoneNumber: this.phoneNumber,
+          isPhoneNumberVerified: this.isPhoneNumberVerified,
+          isProfileCreated: this.isProfileCreated,
           role: this.role,
+          isKYCDone: this.isKYCDone,
           id: this.id,
         };
       },
@@ -51,5 +87,4 @@ const userSchema = new mongoose.Schema(
 
 const User = mongoose.model("User", userSchema);
 
-User.find;
 module.exports = User;

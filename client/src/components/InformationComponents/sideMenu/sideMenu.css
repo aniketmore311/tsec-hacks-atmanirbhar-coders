@@ -1,0 +1,35 @@
+.sidemenu__container{
+    width: 20%;
+    height: 90vh;
+    margin: 1rem;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.sidemenu__container_wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+
+}
+
+.sidemenu__container-link{
+    padding: 5px 10px;
+    text-decoration: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 400;
+    /* height: 10%; */
+    width: 100%;
+    color: black;
+    
+}
+
+.sidemenu__container-link:hover{
+    background-color: #6351ce;
+    color: white;
+    border-radius: 5px;
+}

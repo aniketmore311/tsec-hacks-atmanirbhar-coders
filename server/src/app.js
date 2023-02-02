@@ -11,6 +11,7 @@ const userRouter = require("./routes/user.routes");
 const adminRouter = require("./routes/admin.routes");
 const verificationRouter = require("./routes/verification.routes");
 const verificationApproveRouter = require("./routes/verification.approve.routes");
+const imagesRouter = require("./routes/routes.image");
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use("/api/v1/admin", adminRouter);
 //@ts-ignore
 app.use("/api/v1/verify", verificationRouter);
 app.use("/api/v1/verify/approve", verificationApproveRouter);
+app.use("/api/v1/images", imagesRouter);
 
 //404
 app.use((req, res, next) => {
