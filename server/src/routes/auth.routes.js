@@ -30,15 +30,9 @@ authRouter.post(
   "/signup/start",
   body("firstname").isString().notEmpty(),
   body("lastname").isString().notEmpty(),
-  body("password").isString().notEmpty(),
   validate(),
   catchAsync(async (req, res, next) => {
-    const { firstname, lastname, password } = req.body;
-
-    const hashedPassword = bcryptjs.hashSync(
-      password,
-      bcryptjs.genSaltSync(12)
-    );
+    const { firstname, lastname } = req.body;
 
     const user = await User.create({
       firstname,
@@ -48,7 +42,7 @@ authRouter.post(
       phoneNumber: "<empty>",
       phoneNumberOTP: generateOTP(),
       role: "user",
-      password: hashedPassword,
+      password: "<empty>",
     });
 
     return res.status(201).json({
@@ -180,6 +174,34 @@ authRouter.post(
     }
 
     user.isEmailVerified = true;
+
+    await user.save();
+
+    return res.status(200).json({
+      user: user.toRespDTO(),
+    });
+  })
+);
+
+authRouter.post(
+  "/signup/add/password",
+  body("userId").isString().notEmpty(),
+  body("password").isString().notEmpty(),
+  validate(),
+  catchAsync(async (req, res, next) => {
+    const { userId, password } = req.body;
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+      throw new createHttpError.BadRequest("user not found");
+    }
+    const hashedPassword = bcryptjs.hashSync(
+      password,
+      bcryptjs.genSaltSync(12)
+    );
+
+    user.password = hashedPassword;
 
     await user.save();
 
