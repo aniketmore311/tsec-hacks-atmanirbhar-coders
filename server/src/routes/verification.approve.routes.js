@@ -12,9 +12,10 @@ verificationApproveRouter.post("/", async (req, res, next) => {
         const temp = await Verification.findById(id);
         console.log(temp.user);
         const user = await User.findById(temp.user);
-        console.log(user);
+
         user.isKYCDone = true;
         await user.save();
+        console.log(user);
         // const result = new Verification(req.body);
         // await result.save(() => res.json(result));
     } catch (err) {

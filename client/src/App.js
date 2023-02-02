@@ -4,6 +4,7 @@ import Auth from "./components/auth/Auth";
 import Home from "./components/home/Home";
 import Flatmates from "./pages/Flatmates";
 import Information from "./pages/information/Information";
+import Landing from "./pages/Landing/Landing";
 import ViewProfilePage from "./pages/viewProfilePage/ViewProfilePage";
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+                <Route path="/landing" element={<Landing />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/info" element={<Information />} />
         <Route path="/profile" element={<ViewProfilePage />} />
