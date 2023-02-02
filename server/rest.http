@@ -1,0 +1,21 @@
+POST http://localhost:8080/api/v1/verify
+Content-Type: application/json
+
+{
+    "user":  "63dbd01eee4cfd26208dd8e0",
+    "name": "Yash",
+    "aadharno": "123456789101",
+    "dob": "2023-12-09",
+    "gender": "Male"
+}
+
+###
+GET http://localhost:8080/api/v1/verify
+
+###verification approve
+POST http://localhost:8080/api/v1/verify/approve
+Content-Type: application/json
+
+{
+    "verificationId": "63dbdf22f8e6b9cd81fe7100"
+}

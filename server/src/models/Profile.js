@@ -11,12 +11,19 @@ const profileSchema = new mongoose.Schema(
     },
     bio: {
       type: Types.String,
-      required: true,
+    },
+    age: {
+      type: Types.Number,
+    },
+    dateOfBirth: {
+      type: Types.String,
+    },
+    maritalStatus: {
+      type: Types.String,
     },
     // could be student or professional
     type: {
       type: Types.String,
-      required: true,
     },
     //only if user is student
     institute: {
@@ -36,45 +43,39 @@ const profileSchema = new mongoose.Schema(
     },
     gender: {
       type: Types.String,
-      required: true,
     },
     profilePictureURL: {
       type: Types.String,
-      required: true,
     },
     //smoking or non smoking
     smokingPreference: {
       type: Types.String,
-      required: true,
     },
     foodPreference: {
       type: Types.String,
-      required: true,
     },
     socialMediaLinks: [
       {
         type: Types.String,
-        required: true,
       },
     ],
     interests: [
       {
         type: Types.String,
-        required: true,
       },
     ],
     country: {
       type: Types.String,
-      required: true,
       default: "India",
     },
     state: {
       type: Types.String,
-      required: true,
+    },
+    city: {
+      type: Types.String,
     },
     locality: {
       type: Types.String,
-      required: true,
     },
     schemaVersion: {
       type: Types.String,
@@ -82,6 +83,10 @@ const profileSchema = new mongoose.Schema(
     },
   },
   {
+    methods: {
+      getPercentageMatch: (otherProfile) => {
+      },
+    },
     timestamps: true,
   }
 );
