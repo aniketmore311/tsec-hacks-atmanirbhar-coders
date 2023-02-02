@@ -25,6 +25,9 @@ const config = {
     accessKeyId: getEnvOrDefault("AWS_ACCESS_KEY_ID"),
     secretAccessKey: getEnvOrDefault("AWS_SECRET_ACCESS_KEY"),
     defaultRegion: getEnvOrDefault("AWS_DEFAULT_REGION", "ap-south-1"),
+    ses: {
+      sender: getEnvOrDefault("SES_SENDER"),
+    },
   },
 };
 

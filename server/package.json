@@ -20,6 +20,8 @@
   "homepage": "https://github.com/aniketmore311/express-hackathon-api-starter-v1#readme",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.259.0",
+    "@aws-sdk/client-ses": "^3.262.0",
+    "@aws-sdk/client-sns": "^3.263.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
