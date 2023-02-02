@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import Auth from './components/auth/Auth';
 import Home from "./components/home/Home";
-import MapboxMap from "./components/searchPageComponents/MapboxMap";
 
 function App() {
   return (

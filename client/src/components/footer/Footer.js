@@ -2,10 +2,10 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="container-fluid my-5">
+    <div className="container-fluid my-5" style={{ width: '100%', padding: '0px'}}>
       <footer
         className="text-center text-lg-start text-white"
-        style={{backgroundColor: "#1c2331"}}
+        style={{backgroundColor: "#1c2331", width: '100%'}}
       >
         <section
           className="d-flex justify-content-between p-4"
