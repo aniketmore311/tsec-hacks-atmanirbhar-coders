@@ -1,0 +1,45 @@
+.nav__container{
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.nav__wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 1rem;
+}
+
+.nav__left{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav__left h2{
+    margin-right: 4rem;
+   
+}
+
+.nav__left-links{
+    display: flex;
+    padding-top: 12px;
+}
+
+.nav__left-links p{
+    margin-right: 2rem;
+    font-size: 17px;
+    line-height: 10px;
+    font-weight: 500;
+}
+
+.nav__left-links p a{
+    text-decoration: none;
+    color: black;
+}
+
+.nav__right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}

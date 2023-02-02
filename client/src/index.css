@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: black;
+
+  background:-moz-linear-gradient(90deg, rgba(6, 62, 140, 1) 0%, rgba(4, 7, 33, 1) 100%); 
+
+  /* safari 5.1+,chrome 10+ */
+  background:-webkit-linear-gradient(90deg, rgba(6, 62, 140, 1) 0%, rgba(4, 7, 33, 1) 100%);
+
+  /* opera 11.10+ */
+  background:-o-linear-gradient(90deg, rgba(6, 62, 140, 1) 0%, rgba(4, 7, 33, 1) 100%);
+
+  /* ie 6-9 */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#040721', endColorstr='#063E8C', GradientType=0 );
+
+  /* ie 10+ */
+  background:-ms-linear-gradient(90deg, rgba(6, 62, 140, 1) 0%, rgba(4, 7, 33, 1) 100%);
+
+  /* global 94%+ browsers support */
+  background:linear-gradient(90deg, rgba(6, 62, 140, 1) 0%, rgba(4, 7, 33, 1) 100%);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
