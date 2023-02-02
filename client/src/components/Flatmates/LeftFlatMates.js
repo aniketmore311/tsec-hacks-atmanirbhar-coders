@@ -9,7 +9,7 @@ const LeftFlatMates = ({ flatmates }) => {
       className="LeftSide"
       style={{ width: "85%", paddingBottom: "50px", marginTop: "70px" }}
     >
-      <Search />
+      {/* <Search /> */}
       {flatmates.length === 0 ? (
         <p className="msg-container">No matches found....</p>
       ) : (
