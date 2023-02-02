@@ -30,7 +30,9 @@ userRouter.get(
     //@ts-ignore
     const user = req.user;
 
-    const profile = await Profile.findOne({ userId: user.id });
+    const profile = await Profile.findOne({ userId: user.id })
+      .populate("userId")
+      .exec();
     if (!profile) {
       throw new createHttpError.NotFound("user's profile not found");
     }
@@ -50,7 +52,7 @@ userRouter.get(
     if (!profile) {
       throw new createHttpError.BadRequest("user has no profile");
     }
-    const profiles = await Profile.find();
+    const profiles = await Profile.find().populate("userId").exec();
     const results = [];
     for (const otherProfile of profiles) {
       if (profile.id != otherProfile.id) {
@@ -64,6 +66,30 @@ userRouter.get(
       return second.percentageMatch - first.percentageMatch;
     });
     return res.json(results);
+  })
+);
+
+userRouter.get(
+  "/profile/:userId",
+  authenticate(),
+  authorize("user"),
+  catchAsync(async (req, res) => {
+    //@ts-ignore
+    const id = req.user;
+    const userId = req.params.userId;
+
+    const profile = await Profile.findOne({ userId: id })
+      .populate("userId")
+      .exec();
+    if (!profile) {
+      throw new createHttpError.BadRequest("user has no profile");
+    }
+    const otherProfile = await Profile.findOne({ id: userId });
+    const percentageMatch = getPercentageMatch(profile, otherProfile);
+    return res.json({
+      profile: profile,
+      percentageMatch: percentageMatch,
+    });
   })
 );
 
@@ -109,6 +135,7 @@ userRouter.patch(
       profile[prop] = req.body[prop];
     }
     await profile.save();
+    await profile.populate("userId");
     res.json(profile.toJSON());
   })
 );

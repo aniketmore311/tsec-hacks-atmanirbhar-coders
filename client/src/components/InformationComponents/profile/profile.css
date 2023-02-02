@@ -43,18 +43,16 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 5rem;
+    gap: 1rem;
     padding: 1rem 3rem;
 }
 
 .profile__container-bottom .form-container{
    
     width: 40%;
-}
-
-.profile__container-bottom .form-container{
     display: flex;
 }
+
 
 .profile__container-bottom .form-container label{
     width: 30%;
@@ -69,6 +67,21 @@
     border-radius: 5px;
 }
 
+.profile__container-btn{
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.profile__container-btn button{
+    padding: 5px 15px;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #6351ce;
+    color: white;
+}
 
 @media only screen and (max-width: 800px ){
 

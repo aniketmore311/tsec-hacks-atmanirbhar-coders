@@ -25,10 +25,17 @@
     /* height: 10%; */
     width: 100%;
     color: black;
+    margin-bottom: 0;
     
 }
 
 .sidemenu__container-link:hover{
+    background-color: #6351ce;
+    color: white;
+    border-radius: 5px;
+}
+
+.active{
     background-color: #6351ce;
     color: white;
     border-radius: 5px;
