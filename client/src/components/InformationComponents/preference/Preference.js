@@ -1,9 +1,25 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./preference.css";
 
-const Preference = ({ nextId, prevId }) => {
-  const [smoking, setSmoking] = useState("");
-  const [food, setFood] = useState("");
+const Preference = ({ nextId, prevId, profileData, setProfile }) => {
+  const [smoking, setSmoking] = useState(profileData.smokingPreference);
+  const [food, setFood] = useState(profileData.foodPreference);
+
+  const handleNext = () => {
+    axios.patch('http://localhost:8080/api/v1/user/profile', {smokingPreference: smoking, 
+    foodPreference: food
+},{
+        headers:{
+          Authorization: "Bearer "+localStorage.getItem("access_token")
+        }
+      }).then(res => { setProfile(res.data)
+        nextId();
+    })
+      .catch(err => console.log(err))
+    
+  }
+
   return (
     <div className="preference__container">
       <div className="preference__container_wrapper">
@@ -38,7 +54,7 @@ const Preference = ({ nextId, prevId }) => {
           <button type="button" onClick={prevId}>
             Prev
           </button>
-          <button type="button" onClick={nextId}>
+          <button type="button" onClick={handleNext}>
             Next
           </button>
         </div>

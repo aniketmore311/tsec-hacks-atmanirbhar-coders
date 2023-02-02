@@ -26,7 +26,8 @@ const Login = (props) => {
         action.resetForm();
 
         axios.post('http://localhost:8080/api/v1/auth/login', values )
-        .then(res => {console.log(res.data.data.user)
+        .then(res => {console.log(res)
+          localStorage.setItem("access_token",res.data.data.accessToken)
         navigate('/')
       })
         .catch(err => console.log(err))
