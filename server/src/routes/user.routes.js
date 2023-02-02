@@ -30,7 +30,9 @@ userRouter.get(
     //@ts-ignore
     const user = req.user;
 
-    const profile = await Profile.findOne({ userId: user.id });
+    const profile = await Profile.findOne({ userId: user.id })
+      .populate("userId")
+      .exec();
     if (!profile) {
       throw new createHttpError.NotFound("user's profile not found");
     }
