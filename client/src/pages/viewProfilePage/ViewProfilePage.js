@@ -4,6 +4,7 @@ import ImageCard from "../../components/viewProfilePageComponent/ImageCard";
 import SocialMediaCard from "../../components/viewProfilePageComponent/SocialMediaCard";
 import TopMatchCard from "../../components/viewProfilePageComponent/TopMatchCard";
 import TopMatchCardGraph from "../../components/viewProfilePageComponent/TopMatchCardGraph";
+import { useLocation } from "react-router-dom";
 
 import {
   MDBCol,
@@ -24,19 +25,21 @@ import {
 } from "mdb-react-ui-kit";
 
 const ViewProfilePage = () => {
+  const location = useLocation();
+  console.log("locaton data", location.state);
   return (
     <section style={{ backgroundColor: "#eee" }}>
       <MDBContainer className="py-5">
         <MDBRow>
           <MDBCol lg="4">
-            <ImageCard />
+            <ImageCard data={location.state.profile} />
             <SocialMediaCard />
           </MDBCol>
           <MDBCol lg="8">
-            <DetailsCard />
+            <DetailsCard data={location.state.profile} />
             <MDBRow>
               <MDBCol md="6">
-                <TopMatchCardGraph />
+                <TopMatchCardGraph per={location.state.percentageMatch} />
               </MDBCol>
             </MDBRow>
           </MDBCol>

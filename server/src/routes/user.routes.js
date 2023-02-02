@@ -52,7 +52,7 @@ userRouter.get(
     if (!profile) {
       throw new createHttpError.BadRequest("user has no profile");
     }
-    const profiles = await Profile.find();
+    const profiles = await Profile.find().populate("userId").exec();
     const results = [];
     for (const otherProfile of profiles) {
       if (profile.id != otherProfile.id) {

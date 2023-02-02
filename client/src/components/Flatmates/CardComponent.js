@@ -17,24 +17,45 @@ import {
   MDBListGroup,
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
 
 const CardComponent = ({ data }) => {
+  const navigate = useNavigate();
+
+  const openProfile = () => {
+    navigate("/profile", { state: data });
+  };
+
   return (
     <div className="col">
       <div className="card h-100">
-        <img src={data.image} className="card-img-top" alt="Skyscrapers" />
+        <img
+          src={data.profile.profilePictureURL}
+          className="card-img-top"
+          alt="Skyscrapers"
+        />
         <div className="card-body">
-          <h5 className="card-title">{data.title}</h5>
-          <p className="card-text">{data.description}</p>
+          <h5 className="card-title">
+            {data.profile.userId.firstname + " " + data.profile.userId.lastname}
+          </h5>
+          <p className="card-text">{data.profile.bio}</p>
         </div>
         <MDBCardBody>
-          <MDBCardText className="mb-4">Match Status: 70%</MDBCardText>
+          <MDBCardText className="mb-4">
+            Match Status: {data.percentageMatch}
+          </MDBCardText>
           <MDBProgress className="rounded">
-            <MDBProgressBar width={50} valuemin={0} valuemax={100} />
+            <MDBProgressBar
+              width={data.percentageMatch}
+              valuemin={0}
+              valuemax={100}
+            />
           </MDBProgress>
         </MDBCardBody>
         <div className="card_button_container">
-          <button className="card-btn">View Profile</button>
+          <button className="card-btn" onClick={openProfile}>
+            View Profile
+          </button>
         </div>
       </div>
     </div>

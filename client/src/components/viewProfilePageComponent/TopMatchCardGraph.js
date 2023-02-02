@@ -19,14 +19,14 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 
-const TopMatchCardGraph = () => {
+const TopMatchCardGraph = ({per}) => {
   return (
     <div>
       <MDBCard style={{ width: "740px" }}>
         <MDBCardBody>
-          <MDBCardText className="mb-4">Match Status: 70%</MDBCardText>
+          <MDBCardText className="mb-4">Match Status: {per}</MDBCardText>
           <MDBProgress className="rounded" style={{ height: "7.5px" }}>
-            <MDBProgressBar width={50} valuemin={0} valuemax={100} />
+            <MDBProgressBar width={per} valuemin={0} valuemax={100} />
           </MDBProgress>
         </MDBCardBody>
       </MDBCard>

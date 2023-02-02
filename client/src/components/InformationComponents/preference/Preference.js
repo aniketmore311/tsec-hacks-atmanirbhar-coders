@@ -31,8 +31,8 @@ const Preference = ({ nextId, prevId, profileData, setProfile }) => {
             name="smoking"
             id="smoking"
           >
-            <option value="Yes">Yes, I smoke</option>
-            <option value="No">No, I don't smoke</option>
+            <option value="yes">Yes, I smoke</option>
+            <option value="no">No, I don't smoke</option>
           </select>
         </div>
         <div className="form-pcontainer">
@@ -43,10 +43,10 @@ const Preference = ({ nextId, prevId, profileData, setProfile }) => {
             name="food"
             id="food"
           >
-            <option value="Non-Veg">Non Veg</option>
-            <option value="Veg">Veg</option>
-            <option value="Jain">Jain</option>
-            <option value="Vegan">Vegan</option>
+            <option value="non-Veg">Non Veg</option>
+            <option value="veg">Veg</option>
+            <option value="jain">Jain</option>
+            <option value="vegan">Vegan</option>
           </select>
         </div>
 

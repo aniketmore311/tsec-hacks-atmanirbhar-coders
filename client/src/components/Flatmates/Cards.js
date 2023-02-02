@@ -2,9 +2,7 @@ import { useState } from "react";
 import { CardData } from "./CardData";
 import CardComponent from "./CardComponent";
 
-function Cards() {
-  const [cardData, setCardData] = useState(CardData);
-  console.log(cardData);
+function Cards({ flatmates }) {
   return (
     <div
       className="row row-cols-1 row-cols-md-3 g-4 "
@@ -14,7 +12,7 @@ function Cards() {
         marginTop: "20px",
       }}
     >
-      {CardData.map((data, index) => {
+      {flatmates.map((data, index) => {
         return <CardComponent key={index} data={data} />;
       })}
     </div>
