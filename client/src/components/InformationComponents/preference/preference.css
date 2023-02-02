@@ -1,3 +1,4 @@
+
 .preference__container{
     width: 75%;
     /* height: 90vh; */
@@ -17,14 +18,21 @@
     
 }
 
-.preference__container_wrapper .form-container label{
-    width: 30%;
+
+.form-pcontainer{
+    margin-bottom: 1rem;
+}
+
+.preference__container_wrapper .form-pcontainer label{
+    width: 20%;
+    font-size: 1.13rem;
 }
 
 .preference__container-btns{
     display: flex;
     justify-content: center;
     gap: 1rem;
+    margin-top: 1rem;
     
 }
 

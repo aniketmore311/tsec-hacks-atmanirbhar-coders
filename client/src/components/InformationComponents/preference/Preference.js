@@ -23,7 +23,7 @@ const Preference = ({ nextId, prevId, profileData, setProfile }) => {
   return (
     <div className="preference__container">
       <div className="preference__container_wrapper">
-        <div className="form-container">
+        <div className="form-pcontainer">
           <label>Smoking preference</label>
           <select
             value={smoking}
@@ -35,7 +35,7 @@ const Preference = ({ nextId, prevId, profileData, setProfile }) => {
             <option value="No">No, I don't smoke</option>
           </select>
         </div>
-        <div className="form-container">
+        <div className="form-pcontainer">
           <label>Food preference</label>
           <select
             value={food}
@@ -50,7 +50,7 @@ const Preference = ({ nextId, prevId, profileData, setProfile }) => {
           </select>
         </div>
 
-        <div className="profession__container-btns">
+        <div className="preference__container-btns">
           <button type="button" onClick={prevId}>
             Prev
           </button>

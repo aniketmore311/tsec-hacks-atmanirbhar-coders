@@ -1,28 +1,42 @@
 import React from "react";
 import "./sideMenu.css";
-const SideMenu = () => {
+const SideMenu = ({ activeId, setId }) => {
+
+  const changeActive = (n) => {
+    setId(n);
+  }
   return (
     <div className="sidemenu__container">
       <div className="sidemenu__container_wrapper">
-        <a href="" className="sidemenu__container-link">
+        { activeId === 1 ? <p href="" className="active sidemenu__container-link">
           Profile
-        </a>
+        </p> : <p onClick={() => changeActive(1)} className="sidemenu__container-link">
+          Profile
+        </p> }
         <hr></hr>
-        <a href="" className="sidemenu__container-link">
+        { activeId === 2 ? <p href="" className="active sidemenu__container-link">
           Bio
-        </a>
+        </p> : <p onClick={() => changeActive(2)} className="sidemenu__container-link">
+          Bio
+        </p> }
         <hr></hr>
-        <a href="" className="sidemenu__container-link">
-          Students/Profession
-        </a>
+        { activeId === 3 ? <p href="" className="active sidemenu__container-link">
+          Student/Profession
+        </p> : <p onClick={() => changeActive(3)} className="sidemenu__container-link">
+          Student/Profession
+        </p> }
         <hr></hr>
-        <a href="" className="sidemenu__container-link">
+        { activeId === 4 ? <p href="" className="active sidemenu__container-link">
           Preferences
-        </a>
+        </p> : <p onClick={() => changeActive(4)} className="sidemenu__container-link">
+          Preferences
+        </p> }
         <hr></hr>
-        <a href="" className="sidemenu__container-link">
+        { activeId === 5 ? <p href="" className="active sidemenu__container-link">
           Interests
-        </a>
+        </p> : <p onClick={() => changeActive(5)} className="sidemenu__container-link">
+          Interests
+        </p> }
         <hr></hr>
       </div>
     </div>
