@@ -60,6 +60,9 @@ userRouter.get(
         });
       }
     }
+    results.sort((first, second) => {
+      return second.percentageMatch - first.percentageMatch;
+    });
     return res.json(results);
   })
 );
