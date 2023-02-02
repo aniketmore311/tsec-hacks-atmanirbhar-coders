@@ -4,7 +4,7 @@ import RightFlatMates from "../components/Flatmates/RightFlatMates";
 // import Cards from "../components/Flatmates/Cards";
 // import Search from "../components/Flatmates/Search";
 
-const Flatemates = () => {
+const Flatmates = () => {
     return (
         <div style={{ display: "flex" }}>
             <LeftFlatMates />
@@ -13,4 +13,4 @@ const Flatemates = () => {
     );
 };
 
-export default Flatemates;
+export default Flatmates;

@@ -1,0 +1,20 @@
+.card_button_container {
+  padding: 5px;
+}
+
+.card-btn {
+  background-color: white;
+  color: black;
+  border: 2px solid #008cba;
+  padding: 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.card-btn:hover {
+  background-color: #008cba;
+  color: white;
+}
