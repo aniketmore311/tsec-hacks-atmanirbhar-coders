@@ -1,0 +1,16 @@
+.LabelColor {
+    display: block;
+    text-align: left;
+    margin: auto;
+    font-size: 17px;
+    padding-bottom: 4px;
+}
+
+.right_container{
+    float: right;
+    max-width: 240px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    padding-right: 30px;
+}

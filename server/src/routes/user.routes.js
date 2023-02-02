@@ -4,7 +4,7 @@ const createHttpError = require("http-errors");
 const authenticate = require("../middleware/authenticate");
 const authorize = require("../middleware/authorize");
 const Profile = require("../models/Profile");
-const { catchAsync } = require("../utils");
+const { catchAsync, getPercentageMatch } = require("../utils");
 const upload = require("../setup/multer.setup");
 const { body } = require("express-validator");
 const User = require("../models/User");
@@ -30,7 +30,9 @@ userRouter.get(
     //@ts-ignore
     const user = req.user;
 
-    const profile = await Profile.findOne({ userId: user.id });
+    const profile = await Profile.findOne({ userId: user.id })
+      .populate("userId")
+      .exec();
     if (!profile) {
       throw new createHttpError.NotFound("user's profile not found");
     }
@@ -38,61 +40,57 @@ userRouter.get(
   })
 );
 
-userRouter.post(
+userRouter.get(
+  "/profile/matches",
+  authenticate(),
+  authorize("user"),
+  catchAsync(async (req, res) => {
+    //@ts-ignore
+    const user = req.user;
+
+    const profile = await Profile.findOne({ userId: user.id });
+    if (!profile) {
+      throw new createHttpError.BadRequest("user has no profile");
+    }
+    const profiles = await Profile.find();
+    const results = [];
+    for (const otherProfile of profiles) {
+      if (profile.id != otherProfile.id) {
+        results.push({
+          profile: otherProfile.toJSON(),
+          percentageMatch: getPercentageMatch(profile, otherProfile),
+        });
+      }
+    }
+    results.sort((first, second) => {
+      return second.percentageMatch - first.percentageMatch;
+    });
+    return res.json(results);
+  })
+);
+
+userRouter.patch(
   "/profile",
-  body("bio").isString().notEmpty(),
-  body("type").isString().notEmpty(),
-  body("gender").isString().notEmpty(),
-  body("state").isString().notEmpty(),
-  body("locality").isString().notEmpty(),
-  body("smokingPreference").isString().notEmpty(),
-  body("foodPreference").isString().notEmpty(),
-  body("socialMediaLinks.*").isString().notEmpty(),
-  body("interests.*").isString().notEmpty(),
+  body("bio").isString().notEmpty().optional(),
+  body("type").isString().notEmpty().optional(),
+  body("institute").isString().notEmpty().optional(),
+  body("field").isString().notEmpty().optional(),
+  body("company").isString().notEmpty().optional(),
+  body("role").isString().notEmpty().optional(),
+  body("gender").isString().notEmpty().optional(),
+  body("state").isString().notEmpty().optional(),
+  body("city").isString().notEmpty().optional(),
+  body("locality").isString().notEmpty().optional(),
+  body("smokingPreference").isString().notEmpty().optional(),
+  body("foodPreference").isString().notEmpty().optional(),
+  body("socialMediaLinks.*").isString().notEmpty().optional(),
+  body("interests.*").isString().notEmpty().optional(),
   authenticate(),
   authorize("user"),
   upload.single("profilePicture"),
   catchAsync(async (req, res) => {
-    const {
-      bio,
-      type,
-      gender,
-      state,
-      locality,
-      smokingPreference,
-      foodPreference,
-      socialMediaLinks,
-      interests,
-    } = req.body;
-
-    //validation
-    if (type == "student") {
-      if (!req.body.institute) {
-        throw new createHttpError.BadRequest(
-          "institute is required for student"
-        );
-      }
-      if (!req.body.field) {
-        throw new createHttpError.BadRequest("field is required for student");
-      }
-    } else if (type === "professional") {
-      if (!req.body.company) {
-        throw new createHttpError.BadRequest(
-          "company is required for professional"
-        );
-      }
-      if (!req.body.role) {
-        throw new createHttpError.BadRequest(
-          "role is required for professional"
-        );
-      }
-    } else {
-      throw new createHttpError.BadRequest(
-        "invalid user type only student and professional are allowed"
-      );
-    }
-
     //logic
+    //TODO: add logic for file
 
     //@ts-expect-error
     const user = req.user;
@@ -103,40 +101,18 @@ userRouter.post(
     if (!userObj) {
       throw new createHttpError.NotFound("user not found");
     }
-    let profile;
-    if (type == "student") {
-      profile = Profile.create({
-        userId,
-        bio,
-        type,
-        institute: req.body.institute,
-        field: req.body.field,
-        gender,
-        state,
-        locality,
-        smokingPreference,
-        foodPreference,
-        socialMediaLinks,
-        interests,
-      });
+    userObj.isProfileCreated = true;
+    await userObj.save();
+    let profile = await Profile.findOne({ userId });
+    if (!profile) {
+      profile = await Profile.create({ userId });
     }
-    if (type == "professional") {
-      profile = Profile.create({
-        userId,
-        bio,
-        type,
-        company: req.body.company,
-        role: req.body.role,
-        gender,
-        smokingPreference,
-        foodPreference,
-        socialMediaLinks,
-        interests,
-      });
+    for (const prop in req.body) {
+      profile[prop] = req.body[prop];
     }
-
-    //if student must have institute and field
-    //if professional must have company or role
+    await profile.save();
+    await profile.populate("userId");
+    res.json(profile.toJSON());
   })
 );
 

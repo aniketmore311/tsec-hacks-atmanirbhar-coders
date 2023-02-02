@@ -1,0 +1,33 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* margin-top: 20vh; */
+}
+
+.search-input {
+    width: 60%;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 20px;
+}
+
+.search-button {
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-result {
+    font-size: 20px;
+}
+
+.fa-search {
+    font-size: 20px;
+    color: white;
+}
