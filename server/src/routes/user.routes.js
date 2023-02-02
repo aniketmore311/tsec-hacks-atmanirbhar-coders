@@ -111,6 +111,7 @@ userRouter.patch(
       profile[prop] = req.body[prop];
     }
     await profile.save();
+    await profile.populate("userId");
     res.json(profile.toJSON());
   })
 );
