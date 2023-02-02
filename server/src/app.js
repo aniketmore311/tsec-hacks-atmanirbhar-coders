@@ -9,6 +9,7 @@ const errorHandler = require("./middleware/errorHandler");
 const authRouter = require("./routes/auth.routes");
 const userRouter = require("./routes/user.routes");
 const adminRouter = require("./routes/admin.routes");
+const imagesRouter = require("./routes/routes.image");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/images", imagesRouter);
 
 //404
 app.use((req, res, next) => {

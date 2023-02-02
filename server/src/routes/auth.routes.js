@@ -229,12 +229,13 @@ authRouter.post(
       throw new createHttpError.BadRequest("wrong email or password");
     }
 
+    console.log(user);
     if (!user.isEmailVerified) {
       throw new createHttpError.Unauthorized("email not verified");
     }
 
     if (!user.isPhoneNumberVerified) {
-      throw new createHttpError.Unauthorized("email not verified");
+      throw new createHttpError.Unauthorized("phone number not verified");
     }
 
     const expiresAt = new Date(

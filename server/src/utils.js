@@ -34,7 +34,52 @@ function getEnvOrDefault(envName, defaultValue) {
   }
 }
 
+function getPercentageMatch(profile, otherProfile) {
+  let matched = 0;
+  let total = 0;
+  const propsToMatch = [
+    "maritalStatus",
+    "type",
+    "institute",
+    "field",
+    "company",
+    "role",
+    "gender",
+    "smokingPreference",
+    "foodPreference",
+    "country",
+    "state",
+    "city",
+    "locality",
+  ];
+  console.log(profile);
+  for (const prop of propsToMatch) {
+    console.log(profile[prop]);
+    if (profile[prop] && otherProfile[prop]) {
+      console.log(prop);
+      if (profile[prop] == otherProfile[prop]) {
+        total = total + 1;
+        matched = matched + 1;
+      } else {
+        total = total + 1;
+      }
+    }
+  }
+  if (profile.interests && otherProfile.interests) {
+    for (const interest of profile.interests) {
+      if (otherProfile.interests.includes(interest)) {
+        matched = matched + 1;
+      }
+      total = total + 1;
+    }
+  }
+  console.log(total);
+  console.log(matched);
+  console.log(otherProfile);
+  return Math.floor((matched * 100) / total);
+}
 module.exports = {
   catchAsync,
   getEnvOrDefault,
+  getPercentageMatch,
 };
