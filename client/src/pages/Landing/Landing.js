@@ -17,7 +17,7 @@ const Landing = () => {
                 style={{
                     backgroundColor: "#FAF5FF",
                     width: "100vw",
-                    height: "80vh",
+                    height: "100vh",
                 }}
             >
                 <div
@@ -44,7 +44,7 @@ const Landing = () => {
                             style={{
                                 fontFamily: "Merriweather",
                                 fontWeight: "bolder",
-                                fontSize: "4rem",
+                                fontSize: "3rem",
                                 marginBottom: "3rem",
                                 color: "#2A4365",
                             }}
@@ -67,9 +67,9 @@ const Landing = () => {
                             style={{
                                 fontFamily: "Merriweather",
                                 fontWeight: "bold",
-                                padding: "1rem 2rem",
+                                padding: "1rem 1rem",
                                 borderRadius: "1rem",
-                                fontSize: "20px",
+                                fontSize: "16px",
                                 color: "white",
                                 backgroundColor: "#805AD5",
                             }}
@@ -118,8 +118,8 @@ const Landing = () => {
                     >
                         <RiDashboardFill
                             style={{
-                                height: "4rem",
-                                width: "4rem",
+                                height: "3.5rem",
+                                width: "3.5rem",
                                 color: "white",
                                 backgroundColor: "#805AD5",
                                 borderRadius: "1rem",
@@ -130,6 +130,7 @@ const Landing = () => {
                             style={{
                                 fontFamily: "Merriweather",
                                 fontWeight: "bold",
+                                fontSize: "30px",
                                 marginBottom: "1rem",
                             }}
                         >
@@ -158,11 +159,11 @@ const Landing = () => {
                     >
                         <CgProfile
                             style={{
-                                height: "4rem",
-                                width: "4rem",
+                                height: "3.5rem",
+                                width: "3.5rem",
                                 color: "white",
                                 backgroundColor: "#805AD5",
-                                borderRadius: "0.5rem",
+                                borderRadius: "1rem",
                                 marginBottom: "2rem",
                             }}
                         />
@@ -170,6 +171,7 @@ const Landing = () => {
                             style={{
                                 fontFamily: "Merriweather",
                                 fontWeight: "bold",
+                                fontSize: "30px",
                                 marginBottom: "1rem",
                             }}
                         >
@@ -198,8 +200,8 @@ const Landing = () => {
                     >
                         <IoIosSearch
                             style={{
-                                height: "4rem",
-                                width: "4rem",
+                                height: "3.5rem",
+                                width: "3.5rem",
                                 color: "white",
                                 backgroundColor: "#805AD5",
                                 borderRadius: "1rem",
@@ -210,6 +212,7 @@ const Landing = () => {
                             style={{
                                 fontFamily: "Merriweather",
                                 fontWeight: "bold",
+                                fontSize: "30px",
                                 marginBottom: "1rem",
                             }}
                         >
