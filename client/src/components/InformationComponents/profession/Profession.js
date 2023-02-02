@@ -31,12 +31,12 @@ const Profession = ({ nextId, prevId, profileData, setProfile }) => {
       <div className="profession__container_wrapper">
         <div className="student">
           <h3>Student</h3>
-          <div className="form-container">
+          <div className="form-procontainer">
             <label>Institution: </label>
             <input type='text' value={institution} onChange={(e) => setInstitution(e.target.value)}></input>
           </div>
 
-          <div className="form-container">
+          <div className="form-procontainer">
             <label>Field of Study: </label>
             <input type='text' value={fos} onChange={(e) => setFos(e.target.value)}></input>
           </div>
@@ -44,11 +44,11 @@ const Profession = ({ nextId, prevId, profileData, setProfile }) => {
 
         <div className="profession">
         <h3>Profession</h3>
-          <div className="form-container">
+          <div className="form-procontainer">
             <label>Company: </label>
             <input type='text' value={company} onChange={(e) => setCompany(e.target.value)}></input>
           </div>
-          <div className="form-container">
+          <div className="form-procontainer">
             <label>Role: </label>
             <input type='text' value={role} onChange={(e) => setRole(e.target.value)}></input>
           </div>

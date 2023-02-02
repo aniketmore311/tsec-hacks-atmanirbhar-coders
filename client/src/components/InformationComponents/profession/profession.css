@@ -20,32 +20,35 @@
 
 .student{
     height: 45%;
+    width: 100%;
 }
 
 .profession{
     height: 45%;
 }
 
-.form-container{
+.form-procontainer{
+    width: 100%;
     display: flex;
-    margin: 1rem;
+    /* justify-content: space-between; */
+    margin-top: 1rem;
     margin-bottom: 2rem;
 
 }
 
-.form-container label{
-    font-size: 1.1rem;
-    width: 60%;
+.form-procontainer label{
+    font-size: 1.13rem;
+    width: 20%;
 }
 
-.form-container input{
+.form-procontainer input{
     padding: 0px 5px;
     width: 40%;
     outline: none;
     border-radius: 5px;
 }
 
-.form-container label{
+.form-procontainer label{
     margin-right: 1.5rem;
 }
 

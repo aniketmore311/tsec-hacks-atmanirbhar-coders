@@ -12,7 +12,7 @@ import axios from 'axios'
 
 const Information = () => {
     const [ id, setId ] = useState(1);
-
+    console.log(id)
     const [profile, setProfile] = useState({
       userId: {
         firstname: '',
@@ -62,7 +62,7 @@ const Information = () => {
 
   return (
     <div className='information__container'>
-      <SideMenu/>
+      <SideMenu activeId={id} setId={setId}/>
 
 
       

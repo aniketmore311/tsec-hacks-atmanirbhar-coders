@@ -59,10 +59,6 @@ const Bio = ({ id, nextId, prevId, profileData, setProfile}) => {
                     <input type='text' value={city} onChange={(e) => {setCity(e.target.value)}}></input>
                 </div>
 
-                <div className='form-container'>
-                    <label>State: </label>
-                    <input type='text' value={state} onChange={(e) => {setState(e.target.value)}}></input>
-                </div>
 
 
                 <div className='form-container'>
@@ -101,6 +97,11 @@ const Bio = ({ id, nextId, prevId, profileData, setProfile}) => {
                     <input type='text' value={linkedin}  onChange={(e) => {setLinkedIn(e.target.value)}}></input>
                 </div>
 
+                <div className='form-container'>
+                    <label>State: </label>
+                    <input type='text' value={state} onChange={(e) => {setState(e.target.value)}}></input>
+                </div>
+
                 
             </div>
             </div>
@@ -109,7 +110,7 @@ const Bio = ({ id, nextId, prevId, profileData, setProfile}) => {
 
             <div className='bio__container-bottom'>
                 <h4>About Yourself</h4>
-                <textarea rows='5' cols='70' value={about} onChange={(e) => setAbout(e.target.value)}></textarea>
+                <textarea rows='5' cols='70' value={about} style={{ padding: '7px'}} onChange={(e) => setAbout(e.target.value)}></textarea>
             </div>
 
             <div className='bio__container-btns'>
