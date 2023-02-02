@@ -1,7 +1,10 @@
 import React from 'react'
 import './profile.css'
 
-const Profile = () => {
+const Profile = ({ id, nextId }) => {
+
+    
+    // console.log(id)
   return (
     <div className='profile__container'>
     <div className='profile__container_wrapper'>
@@ -31,6 +34,10 @@ const Profile = () => {
                 <label>Phone: </label>
                 <input type='text'></input>
             </div>
+        </div>
+
+        <div className='profile__container-btn'>
+            <button type='button' onClick={nextId}>Next</button>
         </div>
     </div>
       

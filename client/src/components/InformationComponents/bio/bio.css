@@ -1,0 +1,79 @@
+.bio__container{
+    width: 75%;
+    /* height: 90vh; */
+    margin: 1rem;
+    margin-left: 2rem;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.bio__container_wrapper{
+    width: 100%;
+    height: 100%;
+    padding: 2rem 1.5rem;
+    /* margin: auto; */
+    
+    
+}
+
+.bio__container_wrapper h2{
+    text-align: center;
+}
+
+.bio__container-top{
+    height: 40%;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center;
+    align-items: flex-start; */
+    margin-bottom: 2rem;
+    margin-top: 1.5rem;
+}
+
+.bio__container-topleft, .bio__container-topright{
+    width: 50%;
+}
+.bio__container-top .form-container{
+    width: 80%;
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.bio__container-top .form-container label{
+    margin-right: 2rem;
+    font-size: 1.1rem;
+    width: 30%;
+}
+
+.bio__container-top .form-container input{
+    padding: 0px 5px;
+    width: 70%;
+    outline: none;
+    border-radius: 5px;
+}
+
+.bio__container-top .form-container select{
+    margin-left: -8px;
+}
+
+.bio__container-bottom{
+    margin-left: 1rem;
+}
+
+.bio__container-btns{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.bio__container-btns button{
+    padding: 5px 15px;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #6351ce;
+    color: white;
+}

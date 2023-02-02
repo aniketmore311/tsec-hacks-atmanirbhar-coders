@@ -26,9 +26,12 @@ const Login = (props) => {
         action.resetForm();
 
         axios.post('http://localhost:8080/api/v1/auth/login', values )
-        .then(res => dispatch(login(res.data.data.user)))
+        .then(res => {console.log(res.data.data.user)
+        navigate('/')
+      })
+        .catch(err => console.log(err))
 
-        // navigate('/')
+        
 
       }
       

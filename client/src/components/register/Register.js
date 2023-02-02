@@ -8,6 +8,8 @@ const initialValues = {
   lastName: "",
   email: "",
   phone: "",
+  emailotp: "",
+  phoneotp: "",
   password: "",
   confirm_password: "",
   emailOTP: "",
@@ -15,27 +17,68 @@ const initialValues = {
 const Register = (props) => {
   const [emailOTP, setEmailOTP] = useState(false);
   const [phoneOTP, setPhoneOTP] = useState(false);
+  const [ userId, setUserId ] = useState();
+  const [isEmailVerified, setIsEmailverified] = useState(false)
+  const [isPhoneVerified, setIsPhoneverified] = useState(false)
 
-  const handleEmailOTP = () => {
-    setEmailOTP(!emailOTP);
-  };
-
-  const handlePhoneOTP = () => {
-    setPhoneOTP(!phoneOTP);
-  };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values, action) => {
-        console.log(values);
-        action.resetForm();
-
-        // axios.post('http://localhost:8080/api/v1/auth/signup', values )
-        //   .then(res => console.log(res))
+        // console.log(values);
+        axios.post('http://localhost:8080/api/v1/auth/signup/add/password', { userId: userId, password: values.password} )
+        .then(res => {
+          console.log(res)
+          action.resetForm();
+        })
+      
+       
       },
     });
+
+  const handleEmailOTP = () => {
+    setEmailOTP(!emailOTP);
+    
+    axios.post('http://localhost:8080/api/v1/auth/signup/start', { firstname: values.firstName, lastname: values.lastName })
+    .then(res => {
+      const id = res.data.user.id;
+      setUserId(id);
+
+      axios.post('http://localhost:8080/api/v1/auth/signup/verify/email/sendOTP', { userId: id, email: values.email })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+
+    })
+    .catch(err => console.log(err));
+  };
+
+  const verifyEmailOTP = () => {
+    axios.post('http://localhost:8080/api/v1/auth/signup/verify/email/verify', { userId: userId, otp: values.emailotp } )
+    .then(res => {console.log(res)
+    setIsEmailverified(true);
+    })
+    .catch(err => console.log(err))
+  }
+
+  const handlePhoneOTP = () => {
+    setPhoneOTP(!phoneOTP);
+
+    axios.post('http://localhost:8080/api/v1/auth/signup/verify/phonenumber/sendOTP', { userId: userId, phoneNumber: values.phone })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  };
+
+  const verifyPhoneOTP = () => {
+    axios.post('http://localhost:8080/api/v1/auth/signup/verify/phonenumber/verify', { userId: userId, otp: values.phoneotp } )
+    .then(res => {console.log(res)
+    setIsPhoneverified(true)
+    })
+    .catch(err => console.log(err))
+  }
+
+  
 
   const { changeAuthMode } = props;
   return (
@@ -102,7 +145,7 @@ const Register = (props) => {
             </div>
             { !emailOTP ? (<button
               type="button"
-              class="p-1 align-self-end btn btn-outline-success"
+              className="p-1 align-self-end btn btn-outline-success"
               onClick={handleEmailOTP}
               style={{ height: "34px", marginTop: "10px" }}
             >
@@ -113,28 +156,33 @@ const Register = (props) => {
           {emailOTP ? (
             <div className="d-flex justify-content-between align-items-center form-group mt-2">
               <div>
-                <label htmlFor="emailOTP">Enter Email Otp</label>
+                <label htmlFor="emailotp">Enter Email Otp</label>
                 <input
                   type="text"
-                  id="emailOTP"
-                  name="emailOTP"
+                  id="emailotp"
+                  name="emailotp"
                   autoComplete="off"
                   className="form-control mt-1"
                   placeholder="Otp"
-                  value={values.emailOTP}
+                  value={values.emailotp}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />{" "}
               </div>
 
-              <button
+              { !isEmailVerified ? (<button
                 type="button"
-                class="p-1 align-self-end btn btn-outline-info"
-                
+                className="p-1 align-self-end btn btn-outline-info"
+                onClick={verifyEmailOTP}
+
                 style={{ height: "34px", marginTop: "10px" }}
               >
                 Verify Otp
-              </button>
+              </button>) : (
+                <button type="button" class="p-1 align-self-end btn btn-success" 
+                style={{ height: "34px", marginTop: "10px" }}
+                disabled>Email Verified</button>
+              )}
             </div>
           ) : null}
 
@@ -157,7 +205,7 @@ const Register = (props) => {
 
              { !phoneOTP ? (<button
               type="button"
-              class="p-1 align-self-end btn btn-outline-success"
+              className="p-1 align-self-end btn btn-outline-success"
               onClick={handlePhoneOTP}
               style={{ height: "34px", marginTop: "10px" }}
             >
@@ -168,28 +216,32 @@ const Register = (props) => {
           {phoneOTP ? (
             <div className="d-flex justify-content-between align-items-center form-group mt-2">
               <div>
-                <label htmlFor="phoneOTP">Enter Phone Otp</label>
+                <label htmlFor="phoneotp">Enter Phone Otp</label>
                 <input
                   type="text"
-                  id="phoneOTP"
-                  name="phoneOTP"
+                  id="phoneotp"
+                  name="phoneotp"
                   autoComplete="off"
                   className="form-control mt-1"
                   placeholder="Otp"
-                  value={values.phoneOTP}
+                  value={values.phoneotp}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />{" "}
               </div>
 
-              <button
+             { !isPhoneVerified ? ( <button
                 type="button"
-                class="p-1 align-self-end btn btn-outline-info"
-               
+                className="p-1 align-self-end btn btn-outline-info"
+                onClick={verifyPhoneOTP}
                 style={{ height: "34px", marginTop: "10px" }}
               >
                 Verify Otp
-              </button>
+              </button>) : (
+                <button type="button" class="p-1 align-self-end btn btn-success" 
+                 style={{ height: "34px", marginTop: "10px" }}
+                 disabled>Phone Verified</button>
+              )}
             </div>
           ) : null}
 
@@ -228,9 +280,17 @@ const Register = (props) => {
             ) : null}
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary" disabled>
+            { (isEmailVerified && isPhoneVerified) ? (
+              <button type="submit" className="btn btn-primary">
+              Submit
+            </button>) :(
+              <>
+              <p>Email or Phone Not verified</p>
+              <button type="submit" className="btn btn-primary" disabled>
               Submit
             </button>
+            </>
+            )}
           </div>
         </div>
       </form>
