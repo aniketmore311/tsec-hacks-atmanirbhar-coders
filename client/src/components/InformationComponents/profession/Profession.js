@@ -1,18 +1,30 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 import './profession.css'
-const Profession = ({ nextId, prevId }) => {
+const Profession = ({ nextId, prevId, profileData, setProfile }) => {
 
-  const [institution, setInstitution ] = useState('')
-  const [ fos, setFos ] = useState('')
-  const [company, setCompany ] = useState('')
-  const [ role, setRole ] = useState('');
+  const [institution, setInstitution ] = useState(profileData.institute)
+  const [ fos, setFos ] = useState(profileData.field)
+  const [company, setCompany ] = useState(profileData.company)
+  const [ role, setRole ] = useState(profileData.role);
 
 
   const handleNext = () => {
-    console.log(institution, fos, company, role)
-
-    nextId();
+    
+    axios.patch('http://localhost:8080/api/v1/user/profile', {institute: institution, 
+    field: fos,
+    company: company,
+    role: role
+},{
+        headers:{
+          Authorization: "Bearer "+localStorage.getItem("access_token")
+        }
+      }).then(res => { setProfile(res.data)
+        nextId();
+    })
+      .catch(err => console.log(err))
+    
   }
   return (
     <div className="profession__container">

@@ -1,22 +1,42 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import './bio.css'
 
-const Bio = ({ id, nextId, prevId }) => {
+const Bio = ({ id, nextId, prevId, profileData, setProfile}) => {
 
-    const [ dob, setDob] = useState('')
-    const [age, setAge ] = useState('')
-    const [gender, setGender] = useState('')
-    const [marStatus, setMarStatus] = useState('')
-    const [about, setAbout] = useState('')
-    const [ facebook, setFacebook ] = useState('');
-    const [ instagram, setInstagram ] = useState('');
-    const [ linkedin, setLinkedIn ] = useState('')
+
+    const [ dob, setDob] = useState(profileData.dateOfBirth)
+    const [age, setAge ] = useState(profileData.age)
+    const [ city, setCity ] = useState(profileData.city)
+    const [state, setState ] = useState(profileData.state)
+    const [gender, setGender] = useState(profileData.gender)
+    const [marStatus, setMarStatus] = useState(profileData.maritalStatus)
+    const [about, setAbout] = useState(profileData.bio)
+    const [ facebook, setFacebook ] = useState(profileData.socialMediaLinks[0]);
+    const [ instagram, setInstagram ] = useState(profileData.socialMediaLinks[1]);
+    const [ linkedin, setLinkedIn ] = useState(profileData.socialMediaLinks[2])
     //console.log(id)
 
     const handleNext = () => {
-        console.log(dob, age, gender, marStatus, about )
+        axios.patch('http://localhost:8080/api/v1/user/profile', {dateOfBirth: dob, 
+        age: age,
+        city: city,
+        state: state,
+        gender: gender,
+        maritalStatus: marStatus,
+        bio: about,
+        socialMediaLinks : [facebook, instagram, linkedin]
+    
+    },{
+            headers:{
+              Authorization: "Bearer "+localStorage.getItem("access_token")
+            }
+          }).then(res => { setProfile(res.data)
+            nextId();
+        })
+          .catch(err => console.log(err))
 
-        nextId();
+        
     }
   return (
     <div className='bio__container'>
@@ -33,6 +53,17 @@ const Bio = ({ id, nextId, prevId }) => {
                     <label>Age: </label>
                     <input type='text' value={age} onChange={(e) => {setAge(e.target.value)}}></input>
                 </div>
+
+                <div className='form-container'>
+                    <label>City: </label>
+                    <input type='text' value={city} onChange={(e) => {setCity(e.target.value)}}></input>
+                </div>
+
+                <div className='form-container'>
+                    <label>State: </label>
+                    <input type='text' value={state} onChange={(e) => {setState(e.target.value)}}></input>
+                </div>
+
 
                 <div className='form-container'>
                     <label>Gender: </label>

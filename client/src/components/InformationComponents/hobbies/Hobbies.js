@@ -1,9 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
+import axios from 'axios'
 import './hobbies.css'
-const Hobbies = ( { nextId, prevId }) => {
+import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+const Hobbies = ( { nextId, prevId, profileData, setProfile }) => {
 
-    const [hobbies, setHobbies] = useState([])
+    const navigate = useNavigate()
+    const [hobbies, setHobbies] = useState(profileData.interests)
     const [value, setValue] = useState('')
 
     const addItem = () => {
@@ -19,8 +23,18 @@ const Hobbies = ( { nextId, prevId }) => {
     }
 
     const handleNext = () => {
-
-        nextId();
+        axios.patch('http://localhost:8080/api/v1/user/profile', {interests: hobbies},{
+        headers:{
+          Authorization: "Bearer "+localStorage.getItem("access_token")
+        }
+      }).then(res => { setProfile(res.data)
+        // nextId();
+        navigate("/")
+        
+    })
+      .catch(err => console.log(err))
+    
+       
     }
 
   return (
@@ -43,7 +57,7 @@ const Hobbies = ( { nextId, prevId }) => {
 
         <div className='bio__container-btns'>
             <button type='button' onClick={prevId}>Prev</button>
-            <button type='button' onClick={handleNext}>Next</button>
+            <button type='button' onClick={handleNext}>Submit</button>
         </div>
         </div>
         </div>

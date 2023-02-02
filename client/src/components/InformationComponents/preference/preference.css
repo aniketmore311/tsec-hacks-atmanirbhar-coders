@@ -17,6 +17,10 @@
     
 }
 
+.preference__container_wrapper .form-container label{
+    width: 30%;
+}
+
 .preference__container-btns{
     display: flex;
     justify-content: center;

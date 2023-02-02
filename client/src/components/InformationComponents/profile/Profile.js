@@ -1,8 +1,9 @@
 import React from 'react'
 import './profile.css'
 
-const Profile = ({ id, nextId }) => {
+const Profile = ({ id, nextId, profileData }) => {
 
+    const { firstname, lastname, email, phoneNumber } = profileData.userId
     
     // console.log(id)
   return (
@@ -17,22 +18,22 @@ const Profile = ({ id, nextId }) => {
         <div className='profile__container-bottom'>
             <div className='form-container'>
                 <label>First Name: </label>
-                <input type='text'></input>
+                <input type='text' value={firstname}></input>
             </div>
 
             <div className='form-container'>
                 <label>Last Name: </label>
-                <input type='text'></input>
+                <input type='text' value={lastname}></input>
             </div>
 
             <div className='form-container'>
                 <label>Email: </label>
-                <input type='text'></input>
+                <input type='text' value={email}></input>
             </div>
 
             <div className='form-container'>
                 <label>Phone: </label>
-                <input type='text'></input>
+                <input type='text' value={phoneNumber}></input>
             </div>
         </div>
 
