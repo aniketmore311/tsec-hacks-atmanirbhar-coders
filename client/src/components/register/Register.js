@@ -4,7 +4,8 @@ import { signUpSchema } from "../../schemas";
 import axios from "axios";
 
 const initialValues = {
-  name: "",
+  firstName: "",
+  lastName: "",
   email: "",
   phone: "",
   password: "",
@@ -48,20 +49,40 @@ const Register = (props) => {
               Sign In
             </span>
           </div>
-          <div className="form-group mt-2">
-            <label htmlFor="name">Full Name</label>
+          <div className="d-flex justify-content-between form-group mt-2">
+          <div>
+            <label htmlFor="firstName">First Name</label>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="firstName"
+              name="firstName"
               autoComplete="off"
               className="form-control mt-1"
-              placeholder="e.g Jane Doe"
-              value={values.name}
+              placeholder="e.g Jane"
+              value={values.firstName}
               onChange={handleChange}
               onBlur={handleBlur}
+              style={{ width: '150px'}}
             />
-            {errors.name && touched.name ? <p>{errors.name}</p> : null}
+            {errors.firstName && touched.firstName ? <p>{errors.firstName}</p> : null}
+          </div>
+
+          <div className="ml-1">
+            <label htmlFor="name">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              autoComplete="off"
+              className="form-control mt-1"
+              placeholder="e.g Doe"
+              value={values.lastName}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              style={{ width: '150px'}}
+            />
+            {errors.lastName && touched.lastName ? <p>{errors.lastName}</p> : null}
+          </div>
           </div>
           <div className="d-flex justify-content-between align-items-center form-group mt-2">
             <div className="f">
