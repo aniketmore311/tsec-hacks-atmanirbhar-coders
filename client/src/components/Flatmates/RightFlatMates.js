@@ -7,6 +7,7 @@ const RightFlatMates = ({ flatmates, setFilterFlatMate }) => {
     smoking: "yes",
     maratialstatus: "single",
     category: "student",
+    city: "Mumbai",
   });
   console.log("filter", filterOptions);
   const handleOptionChange = (e) => {
@@ -21,7 +22,8 @@ const RightFlatMates = ({ flatmates, setFilterFlatMate }) => {
         item.profile.gender === filterOptions.gender &&
         item.profile.smokingPreference === filterOptions.smoking &&
         item.profile.maritalStatus === filterOptions.maratialstatus &&
-        item.profile.type === filterOptions.category
+        item.profile.type === filterOptions.category &&
+        item.profile.city === filterOptions.city
       );
     });
     setFilterFlatMate(expression);
@@ -113,6 +115,15 @@ const RightFlatMates = ({ flatmates, setFilterFlatMate }) => {
           <option value="student">Student </option>
           <option value="professional">Working Professional</option>
         </select>
+        <label htmlFor="city" className="LabelColor">
+          City
+        </label>
+        <input
+          value={filterOptions.city}
+          onChange={(e) => {
+            setFilterOptions({ ...filterOptions, city: e.target.value });
+          }}
+        ></input>
       </div>
     </div>
   );
