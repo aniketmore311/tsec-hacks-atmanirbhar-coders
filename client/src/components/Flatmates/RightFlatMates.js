@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./RightFlatMates.css";
 
 const RightFlatMates = ({ flatmates, setFilterFlatMate }) => {
+  const [showAll, setShowAll] = useState(true);
   const [filterOptions, setFilterOptions] = useState({
     gender: "male",
     smoking: "yes",
@@ -17,17 +18,21 @@ const RightFlatMates = ({ flatmates, setFilterFlatMate }) => {
   };
 
   useEffect(() => {
-    const expression = flatmates.filter((item) => {
-      return (
-        item.profile.gender === filterOptions.gender &&
-        item.profile.smokingPreference === filterOptions.smoking &&
-        item.profile.maritalStatus === filterOptions.maratialstatus &&
-        item.profile.type === filterOptions.category &&
-        item.profile.city === filterOptions.city
-      );
-    });
-    setFilterFlatMate(expression);
-  }, [filterOptions]);
+    if (showAll) {
+      setFilterFlatMate(flatmates);
+    } else {
+      const expression = flatmates.filter((item) => {
+        return (
+          item.profile.gender === filterOptions.gender &&
+          item.profile.smokingPreference === filterOptions.smoking &&
+          item.profile.maritalStatus === filterOptions.maratialstatus &&
+          item.profile.type === filterOptions.category &&
+          item.profile.city === filterOptions.city
+        );
+      });
+      setFilterFlatMate(expression);
+    }
+  }, [filterOptions, showAll]);
 
   // useEffect(() => {
   //   //filter flatmates and setflatmates
@@ -68,6 +73,17 @@ const RightFlatMates = ({ flatmates, setFilterFlatMate }) => {
         >
           Matchings
         </h1>
+
+        <label htmlFor="selectAll" className="LabelColor">
+          Select All
+        </label>
+        <input
+          type={"checkbox"}
+          checked={showAll}
+          onChange={(e) => {
+            setShowAll((prev) => !prev);
+          }}
+        ></input>
         <label htmlFor="gender" className="LabelColor">
           Gender
         </label>

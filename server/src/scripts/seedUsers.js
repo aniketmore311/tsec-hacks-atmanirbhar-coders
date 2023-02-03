@@ -25,7 +25,7 @@ async function main() {
   const profile1 = await Profile.create({
     userId: user1.id,
     age: 23,
-    bio: "backend developer",
+    bio: "seasoned software engineer with 10 years of experience in the industry. He has a strong background in developing and maintaining software systems using various programming languages and technologies",
     city: "Thane",
     state: "Maharastra",
     country: "India",
@@ -34,8 +34,6 @@ async function main() {
     foodPreference: "non-veg",
     gender: "male",
     type: "student",
-    profilePictureURL:
-      "https://scontent.fbom8-1.fna.fbcdn.net/v/t31.18172-8/15732054_1829744933948321_6912147507579640372_o.png?_nc_cat=103&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=NqMfrZyunEkAX9lVA4R&_nc_oc=AQlOYEgINbsXv40PdRJrPLdSKGlQWwW1ALQNVYt3YiKDdJHZPwjwCeh-BCUPoSyS8_M&_nc_ht=scontent.fbom8-1.fna&oh=00_AfBCdN5ZG-o21IBPex2ZRQi2Mg_wvpDVEsTtMQBneQY8ng&oe=6403AB7B",
     institute: "tsec bandra",
     interests: ["reading", "travelling"],
     locality: "thane",
@@ -63,8 +61,8 @@ async function main() {
   const profile2 = await Profile.create({
     userId: user2.id,
     age: 20,
-    bio: "react developer",
-    city: "Mumbai",
+    bio: "is a motivated student currently pursuing a degree in computer science. he is highly interested in software development and has already gained hands-on experience through various projects and internships.",
+    city: "Chennai",
     state: "Maharastra",
     country: "India",
     field: "Computer Engineering",
@@ -72,8 +70,6 @@ async function main() {
     foodPreference: "veg",
     gender: "male",
     type: "student",
-    profilePictureURL:
-      "https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp",
     institute: "tsec bandra",
     interests: ["reading", "sports", "chess", "coding", "trekking"],
     locality: "vasai",
@@ -101,7 +97,7 @@ async function main() {
   const profile3 = await Profile.create({
     userId: user3.id,
     age: 20,
-    bio: "front end developer",
+    bio: "motivated student studying computer science. My passion lies in software development and I've gained hands-on experience through various projects and internships. I am eager to continue learning",
     city: "Mumbai",
     state: "Maharastra",
     country: "India",
@@ -139,7 +135,7 @@ async function main() {
   const profile4 = await Profile.create({
     userId: user4.id,
     age: 20,
-    bio: "react developer developer",
+    bio: "I am a software engineer with 5 years of experience in the industry. My expertise lies in designing and developing efficient software systems using multiple programming languages and technologies",
     city: "Mumbai",
     state: "Maharastra",
     country: "India",
@@ -176,12 +172,12 @@ async function main() {
   });
   const profile5 = await Profile.create({
     userId: user5.id,
-    age: 20,
+    age: 27,
     bio: "accountant",
     city: "Delhi",
     state: "Delhi",
     country: "India",
-    field: "Computer Engineering",
+    field: "finance",
     dateOfBirth: "1995-12-12",
     foodPreference: "non-veg",
     gender: "male",
@@ -192,11 +188,47 @@ async function main() {
     interests: ["sports", "coding", "trekking"],
     locality: "delhi",
     maritalStatus: "married",
-    smokingPreference: "no",
+    smokingPreference: "yes",
     socialMediaLinks: [
       "www.facebook.com/profile/john",
       "www.instagram.com/profile/john",
       "www.linkedin.com/profile/john",
+    ],
+  });
+  const user6 = await User.create({
+    firstname: "jane",
+    lastname: "doe",
+    email: "janedoe@gmail.com",
+    phoneNumber: "1234567890",
+    emailOTP: "123",
+    phoneNumberOTP: "123",
+    isEmailVerified: true,
+    isPhoneNumberVerified: true,
+    password: hashedPassword,
+    role: "user",
+    isProfileCreated: true,
+  });
+  const profile6 = await Profile.create({
+    userId: user5.id,
+    age: 27,
+    bio: "accountant",
+    city: "Delhi",
+    state: "Delhi",
+    country: "India",
+    field: "finance",
+    dateOfBirth: "1995-12-12",
+    foodPreference: "non-veg",
+    gender: "female",
+    type: "professional",
+    company: "kpmg",
+    interests: ["sports", "coding", "trekking"],
+    locality: "delhi",
+    maritalStatus: "married",
+    smokingPreference: "yes",
+    socialMediaLinks: [
+      "www.facebook.com/profile/jane",
+      "www.instagram.com/profile/jane",
+      "www.linkedin.com/profile/jane",
     ],
   });
   await mongoose.disconnect();

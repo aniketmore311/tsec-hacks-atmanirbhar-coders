@@ -18,6 +18,7 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 import { useNavigate } from "react-router-dom";
+import { getPhotoUrl } from "../../utils";
 
 const CardComponent = ({ data }) => {
   const navigate = useNavigate();
@@ -28,14 +29,25 @@ const CardComponent = ({ data }) => {
 
   return (
     <div className="col">
-      <div className="card h-100">
+      <div className="card h-100 pt-4 pb-4">
         <img
-          src={data.profile.profilePictureURL}
+          src={getPhotoUrl(
+            data.profile.userId.firstname + " " + data.profile.userId.lastname
+          )}
           className="card-img-top"
+          style={{
+            maxWidth: "50%",
+            alignSelf: "center",
+          }}
           alt="Skyscrapers"
         />
         <div className="card-body">
-          <h5 className="card-title">
+          <h5
+            className="card-title"
+            style={{
+              textAlign: "center",
+            }}
+          >
             {data.profile.userId.firstname + " " + data.profile.userId.lastname}
           </h5>
           <p className="card-text">{data.profile.bio}</p>
@@ -52,7 +64,12 @@ const CardComponent = ({ data }) => {
             />
           </MDBProgress>
         </MDBCardBody>
-        <div className="card_button_container">
+        <div
+          className="card_button_container"
+          style={{
+            alignSelf: "center",
+          }}
+        >
           <button className="card-btn" onClick={openProfile}>
             View Profile
           </button>

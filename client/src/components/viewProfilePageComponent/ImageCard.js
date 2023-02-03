@@ -17,6 +17,8 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 import { GoVerified } from "react-icons/go";
+import { getPhotoUrl } from "../../utils";
+import { DataArray } from "@mui/icons-material";
 
 const ImageCard = ({ data }) => {
   const [isVerified, setIsVerified] = useState(false);
@@ -25,7 +27,9 @@ const ImageCard = ({ data }) => {
       <MDBCard className="mb-4">
         <MDBCardBody className="text-center">
           <MDBCardImage
-            src={data.profilePictureURL}
+            src={getPhotoUrl(
+              data.userId.firstname + " " + data.userId.lastname
+            )}
             alt="avatar"
             className="rounded-circle"
             style={{ width: "150px" }}
@@ -34,7 +38,9 @@ const ImageCard = ({ data }) => {
           <p className="text-muted mb-1">
             {data.userId.firstname}{" "}
             <span>
-              {isVerified && <GoVerified style={{ color: "blue" }} />}
+              {data.userId.isKYCDone && (
+                <GoVerified style={{ color: "blue" }} />
+              )}
             </span>
           </p>
           <p className="text-muted mb-4">
