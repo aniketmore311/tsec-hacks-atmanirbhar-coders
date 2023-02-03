@@ -6,6 +6,7 @@ import Flatmates from "./pages/Flatmates";
 import Information from "./pages/information/Information";
 import Landing from "./pages/Landing/Landing";
 import ViewProfilePage from "./pages/viewProfilePage/ViewProfilePage";
+import Logout from "./pages/Logout";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/info" element={<Information />} />
         <Route path="/profile" element={<ViewProfilePage />} />
         <Route path="/flatmates" element={<Flatmates />} />
+        <Route path="/logout" element={<Logout />} />
         {/* <Route path="/map" element={<MapboxMap/>}/> */}
       </Routes>
     </BrowserRouter>
