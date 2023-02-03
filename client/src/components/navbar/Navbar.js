@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import './navbar.css'
 
 const Navbar = () => {
+
+  const [isLogged, setIsLogged] = useState(false);
+    useEffect(() => {
+        if(localStorage.getItem("access_token")){
+            setIsLogged(true)
+        }
+    }, [])
+  
+  
+
   return (
     <header className="p-3 text-white" style={{ backgroundColor: '#6351ce'}}>
     <div className="container">
@@ -25,7 +36,13 @@ const Navbar = () => {
           <li><a href="#" className="nav-link px-2 text-white">FAQs</a></li>
           <li><a href="#" className="nav-link px-2 text-white">About</a></li>
         </ul>
-          <button type="button" className="ml-2 btn btn-outline-light me-2" style={{ marginLeft: '1rem'}}><a href='/auth' style={{ textDecoration: 'none', color: 'white'}}>Login</a></button>
+          
+          
+          { !isLogged ? <button type="button" className="ml-2 btn btn-outline-light me-2" style={{ marginLeft: '1rem'}}>
+          <a href='/auth' style={{ textDecoration: 'none', color: 'white'}}>Login</a></button>
+          : <button type="button" className="ml-2 btn btn-outline-light me-2" style={{ marginLeft: '1rem'}}>
+          <a href='/' style={{ textDecoration: 'none', color: 'white'}}>Logout</a></button>
+          }
           {/* <button type="button" className="btn btn-warning">Sign-up</button> */}
         </div>
       </div>

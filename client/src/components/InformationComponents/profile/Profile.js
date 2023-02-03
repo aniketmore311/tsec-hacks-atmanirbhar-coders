@@ -10,9 +10,9 @@ const Profile = ({ id, nextId, profileData }) => {
     <div className='profile__container'>
     <div className='profile__container_wrapper'>
         <div className='profile__container-top'>
-            <img src='https://www.adani.com/-/media/Project/Adani/About-Us/BOD2/BOD2/14/Gautam-Adani-23-1-12-187969.jpg'
+            <img src=''
              alt='profileImage'></img>
-            <button type='button'>Upload Image</button>
+            {/* <button type='button'>Upload Image</button> */}
         </div>
 
         <div className='profile__container-bottom'>
