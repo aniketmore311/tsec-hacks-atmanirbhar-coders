@@ -18,3 +18,10 @@
   background-color: #008cba;
   color: white;
 }
+
+.container-shadow{
+  box-shadow: 0px 4px 30px 16px rgba(244,244,244,0.75);
+-webkit-box-shadow: 0px 4px 30px 16px rgba(244,244,244,0.75);
+-moz-box-shadow: 0px 4px 30px 16px rgba(244,244,244,0.75);
+border-radius: 20px;
+}

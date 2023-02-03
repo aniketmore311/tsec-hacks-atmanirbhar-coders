@@ -29,7 +29,13 @@ const CardComponent = ({ data }) => {
 
   return (
     <div className="col">
-      <div className="card h-100 pt-4 pb-4">
+      <div
+        className="card h-100 pt-4 pb-4 container-shadow"
+        style={{
+          borderRadius: "12px",
+          boxShadow: "0px 4px 10px 0px rgba(255,255,255,0.75)",
+        }}
+      >
         <img
           src={getPhotoUrl(
             data.profile.userId.firstname + " " + data.profile.userId.lastname

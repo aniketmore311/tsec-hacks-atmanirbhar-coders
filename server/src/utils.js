@@ -52,11 +52,8 @@ function getPercentageMatch(profile, otherProfile) {
     "city",
     "locality",
   ];
-  console.log(profile);
   for (const prop of propsToMatch) {
-    console.log(profile[prop]);
     if (profile[prop] && otherProfile[prop]) {
-      console.log(prop);
       if (profile[prop] == otherProfile[prop]) {
         total = total + 1;
         matched = matched + 1;
@@ -73,9 +70,6 @@ function getPercentageMatch(profile, otherProfile) {
       total = total + 1;
     }
   }
-  console.log(total);
-  console.log(matched);
-  console.log(otherProfile);
   return Math.floor((matched * 100) / total);
 }
 module.exports = {

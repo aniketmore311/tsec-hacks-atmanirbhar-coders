@@ -5,6 +5,8 @@ import SocialMediaCard from "../../components/viewProfilePageComponent/SocialMed
 import TopMatchCard from "../../components/viewProfilePageComponent/TopMatchCard";
 import TopMatchCardGraph from "../../components/viewProfilePageComponent/TopMatchCardGraph";
 import { useLocation } from "react-router-dom";
+import Navbar from "../../components/navbar/Navbar";
+import Footer from "../../components/footer/Footer";
 
 import {
   MDBCol,
@@ -28,24 +30,30 @@ const ViewProfilePage = () => {
   const location = useLocation();
   console.log("locaton data", location.state);
   return (
-    <section style={{ backgroundColor: "#eee" }}>
-      <MDBContainer className="py-5">
-        <MDBRow>
-          <MDBCol lg="4">
-            <ImageCard data={location.state.profile} />
-            <SocialMediaCard />
-          </MDBCol>
-          <MDBCol lg="8">
-            <DetailsCard data={location.state.profile} />
-            <MDBRow>
-              <MDBCol md="6">
-                <TopMatchCardGraph per={location.state.percentageMatch} />
-              </MDBCol>
-            </MDBRow>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-    </section>
+    <>
+      <div>
+        <Navbar />
+      </div>
+      <section style={{ backgroundColor: "#eee" }}>
+        <MDBContainer className="py-5">
+          <MDBRow>
+            <MDBCol lg="4">
+              <ImageCard data={location.state.profile} />
+              <SocialMediaCard />
+            </MDBCol>
+            <MDBCol lg="8">
+              <DetailsCard data={location.state.profile} />
+              <MDBRow>
+                <MDBCol md="6">
+                  <TopMatchCardGraph per={location.state.percentageMatch} />
+                </MDBCol>
+              </MDBRow>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+      </section>
+      {/* <Footer /> */}
+    </>
   );
 };
 

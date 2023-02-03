@@ -3,6 +3,7 @@ import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import "./navbar.css";
 import { useNavigate } from "react-router-dom";
+import { getPhotoUrl } from "../../utils";
 
 const Navbar = () => {
   const [isLogged, setIsLogged] = useState(false);
@@ -17,9 +18,13 @@ const Navbar = () => {
     <header className="p-3 text-white" style={{ backgroundColor: "#6351ce" }}>
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-between ">
-          <img onClick={()=>{
-            navigate("/")
-          }} src="finallogo.png" className="logo" />
+          <img
+            onClick={() => {
+              navigate("/");
+            }}
+            src="finallogo.png"
+            className="logo"
+          />
           <a
             href="/"
             className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
@@ -64,6 +69,21 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
+            {isLogged && (
+              <img
+                style={{
+                  width: "40px",
+                  marginLeft: "10px",
+                  marginRight: "10px",
+                }}
+                src={getPhotoUrl(
+                  (() => {
+                    const user = JSON.parse(localStorage.getItem("user"));
+                    return user.firstname + " " + user.lastname;
+                  })()
+                )}
+              ></img>
+            )}
 
             {!isLogged ? (
               <button

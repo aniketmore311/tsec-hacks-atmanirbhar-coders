@@ -17,6 +17,8 @@ import {
   MDBListGroupItem,
 } from "mdb-react-ui-kit";
 
+import "./DetailsCard.css"
+
 import ProfileInfo from "./ProfileInfo";
 import { Data } from "./Data";
 

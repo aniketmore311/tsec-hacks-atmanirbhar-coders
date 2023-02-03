@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Navbar from "../components/navbar/Navbar";
+import Footer from "../components/footer/Footer";
 import LeftFlatMates from "../components/Flatmates/LeftFlatMates";
 import RightFlatMates from "../components/Flatmates/RightFlatMates";
 // import Cards from "../components/Flatmates/Cards";
@@ -32,13 +34,18 @@ const Flatmates = () => {
     return <p>loading ...</p>;
   }
   return (
-    <div style={{ display: "flex" }}>
-      <LeftFlatMates flatmates={filterFlatmate} />
-      <RightFlatMates
-        flatmates={flatmates}
-        setFilterFlatMate={setFilterFlatMate}
-      />
-    </div>
+    <>
+      <div>
+        <Navbar />
+      </div>
+      <div style={{ display: "flex" }}>
+        <LeftFlatMates flatmates={filterFlatmate} />
+        <RightFlatMates
+          flatmates={flatmates}
+          setFilterFlatMate={setFilterFlatMate}
+        />
+      </div>
+    </>
   );
 };
 

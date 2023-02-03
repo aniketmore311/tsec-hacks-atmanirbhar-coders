@@ -56,6 +56,8 @@ userRouter.get(
     const results = [];
     for (const otherProfile of profiles) {
       if (profile.id != otherProfile.id) {
+        console.log(otherProfile.userId.id);
+        console.log(otherProfile.userId.name);
         results.push({
           profile: otherProfile.toJSON(),
           percentageMatch: getPercentageMatch(profile, otherProfile),

@@ -27,6 +27,7 @@ const Login = (props) => {
           .then((res) => {
             console.log(res);
             localStorage.setItem("access_token", res.data.data.accessToken);
+            localStorage.setItem("user", JSON.stringify(res.data.data.user));
             action.resetForm();
             navigate("/");
           })

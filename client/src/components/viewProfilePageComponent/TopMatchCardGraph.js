@@ -24,7 +24,7 @@ const TopMatchCardGraph = ({per}) => {
     <div>
       <MDBCard style={{ width: "740px" }}>
         <MDBCardBody>
-          <MDBCardText className="mb-4">Match Status: {per}</MDBCardText>
+          <MDBCardText className="mb-4">Match Status: {per}%</MDBCardText>
           <MDBProgress className="rounded" style={{ height: "7.5px" }}>
             <MDBProgressBar width={per} valuemin={0} valuemax={100} />
           </MDBProgress>

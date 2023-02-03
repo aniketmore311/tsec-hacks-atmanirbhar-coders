@@ -7,10 +7,16 @@ const Profile = ({ id, nextId, profileData }) => {
 
   // console.log(id)
   return (
-    <div className="profile__container">
+    <div
+      className="profile__container"
+      style={{ boxShadow: "0px 4px 10px 0px rgba(255,255,255,0.75)" }}
+    >
       <div className="profile__container_wrapper">
         <div className="profile__container-top">
-          <img src={getPhotoUrl(firstname + " " + lastname)} alt="profileImage"></img>
+          <img
+            src={getPhotoUrl(firstname + " " + lastname)}
+            alt="profileImage"
+          ></img>
           {/* <button type='button'>Upload Image</button> */}
         </div>
 

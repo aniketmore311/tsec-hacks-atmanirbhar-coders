@@ -34,27 +34,6 @@ const RightFlatMates = ({ flatmates, setFilterFlatMate }) => {
     }
   }, [filterOptions, showAll]);
 
-  // useEffect(() => {
-  //   //filter flatmates and setflatmates
-  //   console.log("running");
-  //   const newFlatmates = flatmates.filter((item) =>
-  //     // console.log(item.profile.gender);
-  //     // console.log(item.profile.smokingPreference);
-  //     // console.log(item.profile.maratialStatus);
-  //     // // console.log(item.profile.gender)
-
-  //     // const expression =
-  //     item.profile.gender === filter.gender &&
-  //       item.profile.smokingPreference === filter.smoking &&
-  //       item.profile.maritalStatus === filter.maratialstatus &&
-  //       item.profile.type === filter.category,
-  //       setFilterFlatMate(newFlatmates);
-  //   )},[filter])
-
-  // console.log(expression);
-  // console.log(item.profile);
-  // return expression;
-
   return (
     <div className="right_container">
       <div
@@ -62,6 +41,8 @@ const RightFlatMates = ({ flatmates, setFilterFlatMate }) => {
           backgroundColor: "white",
           padding: "20px",
           borderRadius: "10px",
+          marginTop: "42px",
+          boxShadow: "0px 4px 10px 0px rgba(255,255,255,0.75)",
         }}
       >
         <h1

@@ -71,7 +71,14 @@ async function main() {
     gender: "male",
     type: "student",
     institute: "tsec bandra",
-    interests: ["reading", "sports", "chess", "coding", "trekking"],
+    interests: [
+      "reading",
+      "sports",
+      "chess",
+      "coding",
+      "trekking",
+      "travelling",
+    ],
     locality: "vasai",
     maritalStatus: "single",
     smokingPreference: "no",
@@ -147,7 +154,7 @@ async function main() {
     profilePictureURL:
       "https://mdbcdn.b-cdn.net/img/new/standard/city/044.webp",
     institute: "tsec bandra",
-    interests: ["sports", "coding", "trekking"],
+    interests: ["sports", "coding", "trekking", "reading", "travelling"],
     locality: "borivali",
     maritalStatus: "single",
     smokingPreference: "no",
@@ -209,7 +216,7 @@ async function main() {
     isProfileCreated: true,
   });
   const profile6 = await Profile.create({
-    userId: user5.id,
+    userId: user6.id,
     age: 27,
     bio: "accountant",
     city: "Delhi",

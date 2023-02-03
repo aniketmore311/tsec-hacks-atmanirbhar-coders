@@ -7,21 +7,28 @@ const Preference = ({ nextId, prevId, profileData, setProfile }) => {
   const [food, setFood] = useState(profileData.foodPreference);
 
   const handleNext = () => {
-    axios.patch('http://localhost:8080/api/v1/user/profile', {smokingPreference: smoking, 
-    foodPreference: food
-},{
-        headers:{
-          Authorization: "Bearer "+localStorage.getItem("access_token")
+    axios
+      .patch(
+        "http://localhost:8080/api/v1/user/profile",
+        { smokingPreference: smoking, foodPreference: food },
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("access_token"),
+          },
         }
-      }).then(res => { setProfile(res.data)
+      )
+      .then((res) => {
+        setProfile(res.data);
         nextId();
-    })
-      .catch(err => console.log(err))
-    
-  }
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
-    <div className="preference__container">
+    <div
+      className="preference__container"
+      style={{ boxShadow: "0px 4px 10px 0px rgba(255,255,255,0.75)" }}
+    >
       <div className="preference__container_wrapper">
         <div className="form-pcontainer">
           <label>Smoking preference</label>

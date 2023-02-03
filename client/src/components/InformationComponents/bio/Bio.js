@@ -43,7 +43,10 @@ const Bio = ({ id, nextId, prevId, profileData, setProfile }) => {
   };
   return (
     <div className="bio__container">
-      <div className="bio__container_wrapper">
+      <div
+        className="bio__container_wrapper"
+        style={{ boxShadow: "0px 4px 10px 0px rgba(255,255,255,0.75)" }}
+      >
         <h2>Bio</h2>
         <div className="bio__container-top">
           <div className="bio__container-topleft">
